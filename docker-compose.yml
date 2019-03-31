@@ -91,3 +91,22 @@ services:
       context: ./documentation
     ports:
       - "3010:3000"
+
+  # add node-red to original sandbox build
+  node-red:
+    # node-red image updated to include modules for TTN and influxDB
+    # TTN: https://thethingsnetwork.org
+    # running node-red in docker: https://nodered.org/docs/platforms/docker
+    build:
+      context: ./images/node-red/
+      dockerfile: ./${TYPE}/Dockerfile
+      args:
+        NODERED_TAG: ${NODERED_TAG}
+    image: "node-red-docker-influx-ttn"
+    links:
+      - influxdb
+    ports:
+      - 1880:1880
+    restart: on-failure
+    volumes:
+      - ./node-red/data/:/data
