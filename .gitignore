@@ -1,3 +1,6 @@
 chronograf/data/
 influxdb/data/
 kapacitor/data/
+node-red/data/
+\.DS_Store
+*.code-workspace
