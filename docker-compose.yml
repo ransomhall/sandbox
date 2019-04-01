@@ -102,7 +102,7 @@ services:
       dockerfile: ./${TYPE}/Dockerfile
       args:
         NODERED_TAG: ${NODERED_TAG}
-    image: "node-red-docker-influx-ttn"
+    image: "node-red-influx-ttn"
     links:
       - influxdb
     ports:
