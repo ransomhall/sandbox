@@ -1,6 +1,8 @@
-# InfluxData Sandbox
+# TICK Stack and node-red for TTN
 
-This repo is a quick way to get the entire TICK Stack spun up and working together. It uses [Docker](https://www.docker.com/) to spin up the full TICK stack in a connected fashion. This is heavily tested on MacOS and should mostly work on Linux and Windows.
+This repo is a quick way to get the entire TICK Stack spun up and working together with [node-red](https://nodered.org/) and [The Things Network](https://thethingsnetwork.com) (TTN). It uses [Docker](https://www.docker.com/) to spin up the full TICK stack and node-red in a connected fashion. The [node-red docker](https://nodered.org/docs/platforms/docker) image (tagged latest) has been updated to include nodes for [InfluxDB](https://flows.nodered.org/node/node-red-contrib-influxdb) and [TTN](https://www.npmjs.com/package/node-red-contrib-ttn). This is heavily tested on MacOS and should mostly work on Linux and Windows. 
+
+**Note: The Windows [batch file](/sandbox.bat) has not yet been updated to work out of the (sand)box as described below.**
 
 To get started you need a running docker installation. If you don't have one, you can download Docker for [Mac](https://www.docker.com/docker-mac) or [Windows](https://www.docker.com/docker-windows), or follow the installation instructions for Docker CE for your [Linux distribution](https://docs.docker.com/engine/installation/#server).
 
@@ -49,3 +51,17 @@ If you are using the nightly builds and want to get started with Flux, make sure
 > Note: see [influx-stress](https://github.com/influxdata/influx-stress) to create data for your Sandbox.
 
 ![Dashboard](./documentation/static/images/sandbox-dashboard.png)
+
+***
+
+[what follows is a work in progress]
+
+## Getting a device on The Things Network
+
+TTN has excellent [documentation](https://www.thethingsnetwork.org/docs/devices/) for getting a LoRaWAN device communicating on the network.
+
+### Getting started with node-red for TTN
+
+Instructions for configuring node-red to work with TTN can be found [here](https://www.thethingsnetwork.org/docs/applications/nodered/quick-start.html#configure).
+
+
