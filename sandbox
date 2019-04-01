@@ -71,6 +71,10 @@ sandbox () {
         echo "Following the logs from the telegraf container..."
         docker-compose logs -f telegraf
         ;;
+      node-red)
+      echo "Following the logs from the node-red container..."
+      docker-compose logs -f node-red
+      ;;
       *)
         echo "sandbox logs (influxdb||chronograf||kapacitor||telegraf)"
         ;;
@@ -87,9 +91,11 @@ sandbox () {
       if [ $(uname) == "Darwin" ]; then
         open http://localhost:3010
         open http://localhost:8888
+        open http://localhost:1880
       elif [ $(uname) == "Linux" ]; then
         xdg-open http://localhost:8888
         xdg-open http://localhost:3010
+        xdg-open http://localhost:1880
       else
         echo "no browser detected..."
       fi
@@ -106,14 +112,14 @@ sandbox () {
       echo "Services available!"
       ;;
     delete-data)
-      echo "deleting all influxdb, kapacitor and chronograf data..."
-      rm -rf kapacitor/data influxdb/data chronograf/data
+      echo "deleting all influxdb, kapacitor, chronograf, and node-red data..."
+      rm -rf kapacitor/data influxdb/data chronograf/data node-red/data
       ;;
     docker-clean)
       echo "Stopping and removing running sandbox containers..."
       docker-compose down
       echo "Removing TICK images..."
-      docker rmi sandbox_documentation influxdb:latest telegraf:latest kapacitor:latest chronograf:latest chrono_config:latest quay.io/influxdb/influxdb:nightly quay.io/influxdb/chronograf:nightly> /dev/null 2>&1
+      docker rmi sandbox_documentation influxdb:latest telegraf:latest kapacitor:latest chronograf:latest nodered/node-red-docker:latest node-red-docker-influx-ttn:latest chrono_config:latest quay.io/influxdb/influxdb:nightly quay.io/influxdb/chronograf:nightly> /dev/null 2>&1
       docker rmi $(docker images -f "dangling=true" -q)
       ;;
     influxdb)
