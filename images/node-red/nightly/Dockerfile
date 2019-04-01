@@ -1,3 +1,1 @@
- FROM nodered/node-red-docker
- RUN npm install node-red-contrib-influxdb
- RUN npm install node-red-contrib-ttn
+ FROM ransomhall/node-red-influx-ttn:latest
